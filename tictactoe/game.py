@@ -56,21 +56,24 @@ class TicTacToe:
                     break
                 self.current_player = 'O' if self.current_player == 'X' else 'X'
 
-    def play_move(self, row, col):
+    def play_move(self, row, col, print = True):
         '''
         Play move manually.
         '''
         if self.make_move(row, col):
             if self.check_winner():
-                self.print_board()
+                if print:
+                    self.print_board()
                 return self.winner
 
             if all(cell != ' ' for row in self.board for cell in row):
-                self.print_board()
+                if print:
+                    self.print_board()
                 return 'draw'
 
             self.current_player = 'O' if self.current_player == 'X' else 'X'
-            self.print_board()
+            if print:
+                self.print_board()
 
 
 if __name__ == "__main__":
