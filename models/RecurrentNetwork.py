@@ -48,10 +48,10 @@ class ResidualBlock(tf.keras.layers.Layer):
 
 RecurrentNN= tf.keras.Sequential([
     ConvBlock(3, 64, kernel_size = 3),
+    ConvBlock(3, 64, kernel_size = 3),
     ResidualBlock(64, 64),
     ResidualBlock(64, 64),
-    ResidualBlock(64, 64),
-    ResidualBlock(64, 64),
-    tf.keras.layers.Flatten(),
+    # tf.keras.layers.Flatten(),
+    tf.keras.layers.GlobalAveragePooling2D(),
     tf.keras.layers.Dense(9, activation = 'linear')
 ])
